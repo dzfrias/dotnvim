@@ -1,5 +1,7 @@
 # My Neovim Configuration
 
+<img width="666" alt="my configuration" src="https://github.com/dzfrias/dotnvim/assets/96022404/022baf15-6139-4c48-a6e7-04e01e3c6502">
+
 This repository holds my configuration for [neovim](https://neovim.io/)! To
 see all my dotfiles, see
 [my dotfiles repository](https://github.com/dzfrias/dotfiles).
