@@ -26,5 +26,4 @@ require('lazy').setup {
     },
   },
 }
-require 'dzfrias.commands'
 require 'dzfrias.keymaps'
