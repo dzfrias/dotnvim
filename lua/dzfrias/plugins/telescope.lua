@@ -50,6 +50,13 @@ return {
         desc = 'Telescope document symbols',
       },
       {
+        '<leader>tT',
+        function()
+          require('telescope.builtin').lsp_workspace_symbols()
+        end,
+        desc = 'Telescope workspace symbols',
+      },
+      {
         '<leader>tr',
         function()
           require('telescope.builtin').lsp_references()
