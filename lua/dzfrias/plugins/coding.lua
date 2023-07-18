@@ -27,6 +27,27 @@ return {
   },
 
   {
+    'ThePrimeagen/harpoon',
+    dependencies = 'nvim-lua/plenary.nvim',
+    keys = {
+      {
+        '<leader>m',
+        function()
+          require('harpoon.mark').add_file()
+        end,
+      },
+      {
+        '<leader>o',
+        function()
+          require('harpoon.ui').toggle_quick_menu()
+        end,
+      },
+    },
+  },
+
+  'airblade/vim-rooter',
+
+  {
     'folke/trouble.nvim',
     dependencies = 'kyazdani42/nvim-web-devicons',
     cmd = { 'Trouble', 'TroubleToggle' },

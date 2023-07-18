@@ -10,33 +10,18 @@ return {
     end,
   },
 
+  {
+    '~/code/noir.nvim',
+    lazy = false,
+    dev = true,
+    priority = 1000,
+  },
+
   -- Window separators
   {
     'nvim-zh/colorful-winsep.nvim',
     event = 'WinNew',
     config = true,
-  },
-
-  -- Buffer bar
-  {
-    'romgrk/barbar.nvim',
-    event = { 'BufReadPost', 'BufNewFile' },
-    dependencies = {
-      'kyazdani42/nvim-web-devicons',
-    },
-    init = function()
-      vim.g.barbar_auto_setup = false
-    end,
-    opts = {
-      exclude_ft = { 'oil' },
-    },
-    keys = {
-      { '<C-n>', '<Cmd>BufferNext<CR>' },
-      { '<C-p>', '<Cmd>BufferPrevious<CR>' },
-      { '<leader>bd', '<Cmd>BufferClose<CR>' },
-      { '<leader>bp', '<Cmd>BufferPick<CR>' },
-      { '<leader>bP', '<Cmd>BufferPin<CR>' },
-    },
   },
 
   -- Status bar
