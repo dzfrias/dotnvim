@@ -13,6 +13,12 @@ return {
       local codelldb = data
         .. '/mason/packages/codelldb/extension/adapter/codelldb'
       return {
+        tools = {
+          inlay_hints = {
+            auto = false,
+          },
+        },
+
         server = {
           on_attach = function(_, bufnr)
             vim.api.nvim_buf_set_option(
@@ -34,7 +40,7 @@ return {
             vim.keymap.set(
               { 'n', 'v' },
               '<leader>a',
-              rt.code_action_group.code_action_group,
+              vim.lsp.buf.code_action,
               bufopts
             )
           end,
@@ -43,6 +49,13 @@ return {
             ['rust-analyzer'] = {
               files = {
                 excludeDirs = { 'website', 'dist' },
+              },
+              assist = {
+                importEnforceGranularity = true,
+                importPrefix = 'crate',
+              },
+              cargo = {
+                allFeatures = true,
               },
             },
           },

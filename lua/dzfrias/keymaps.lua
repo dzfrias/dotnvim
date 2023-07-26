@@ -13,6 +13,8 @@ noremap('gi', 'gi<Esc>', 'Last place in insert mode')
 noremap('k', 'gk', 'Move down')
 noremap('j', 'gj', 'Move up')
 
+nnoremap('<C-f>', '<C-^>', 'Alternate buffer')
+
 -- Window resizing
 nnoremap('<C-s-l>', '<Cmd>vertical resize -5<CR>', 'Resize window left')
 nnoremap('<C-s-h>', '<Cmd>vertical resize +5<CR>', 'Resize window right')

@@ -12,6 +12,10 @@ require('lazy').setup {
     notify = false,
   },
 
+  dev = {
+    path = '~/code',
+  },
+
   performance = {
     rtp = {
       disabled_plugins = {

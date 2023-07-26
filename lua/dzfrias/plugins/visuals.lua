@@ -1,20 +1,13 @@
 return {
   -- Colorscheme
   {
-    'folke/tokyonight.nvim',
-    branch = 'main',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd [[colorscheme tokyonight-night]]
-    end,
-  },
-
-  {
-    '~/code/noir.nvim',
+    'dzfrias/noir.nvim',
     lazy = false,
     dev = true,
     priority = 1000,
+    config = function()
+      vim.cmd [[colorscheme noir]]
+    end,
   },
 
   -- Window separators

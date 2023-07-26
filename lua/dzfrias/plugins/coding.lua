@@ -75,23 +75,6 @@ return {
   },
 
   {
-    'Wansmer/treesj',
-    keys = {
-      {
-        '<Space>j',
-        function()
-          require('treesj').toggle()
-        end,
-        desc = 'Toggle split and join',
-      },
-    },
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    opts = {
-      use_default_keymaps = false,
-    },
-  },
-
-  {
     'chrisgrieser/nvim-various-textobjs',
     keys = {
       { 'iS', mode = 'o' },
