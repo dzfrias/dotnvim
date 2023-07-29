@@ -93,6 +93,9 @@ return {
 
   { 'dzfrias/scurry.vim', ft = 'scurry' },
 
+  -- Justfile syntax highlights
+  { 'vmchale/just-vim', ft = 'just' },
+
   -- Tridactyl firefox extension
   { 'tridactyl/vim-tridactyl', ft = 'tridactyl' },
 
