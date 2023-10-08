@@ -3,6 +3,7 @@ local set = vim.o
 -- No backups
 set.writebackup = false
 set.backup = false
+set.termguicolors = true
 
 -- Number settings
 set.relativenumber = true
@@ -57,9 +58,6 @@ set.modelines = 1
 
 -- Completion window max items
 set.pumheight = 5
-
--- Spelling
-set.spell = true
 
 set.splitright = true
 

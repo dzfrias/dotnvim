@@ -1,5 +1,21 @@
 return {
   {
+    'dzfrias/arena.nvim',
+    dev = true,
+    event = 'BufWinEnter',
+    config = true,
+    keys = {
+      {
+        '<leader>f',
+        function()
+          require('arena').toggle()
+        end,
+        desc = 'Toggle the arena',
+      },
+    },
+  },
+
+  {
     'stevearc/oil.nvim',
     init = function()
       if vim.fn.isdirectory(vim.api.nvim_buf_get_name(0)) == 1 then
