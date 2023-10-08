@@ -63,29 +63,4 @@ return {
       end
     end,
   },
-
-  -- Tint inactive windows
-  {
-    'levouh/tint.nvim',
-    event = 'VeryLazy',
-    opts = {
-      darken = -45,
-      saturation = 0.4,
-    },
-  },
-
-  -- Window animations
-  {
-    'anuvyklack/windows.nvim',
-    event = 'WinNew',
-    dependencies = {
-      'anuvyklack/middleclass',
-      'anuvyklack/animation.nvim',
-    },
-    config = function()
-      vim.o.winwidth = 5
-      vim.o.equalalways = false
-      require('windows').setup()
-    end,
-  },
 }

@@ -19,13 +19,6 @@ return {
         desc = 'Git reset hunk',
       },
       {
-        'gD',
-        function()
-          require('gitsigns').setqflist()
-        end,
-        desc = 'Open list of diff hunks',
-      },
-      {
         'g]',
         function()
           require('gitsigns').next_hunk()
@@ -47,7 +40,36 @@ return {
   },
 
   {
+    'sindrets/diffview.nvim',
+    keys = {
+      {
+        'gD',
+        function()
+          if vim.bo.filetype == 'DiffviewFiles' then
+            vim.cmd 'DiffviewClose'
+            return
+          end
+          vim.cmd 'DiffviewOpen'
+        end,
+        desc = 'Toggle the diff view',
+      },
+    },
+  },
+
+  {
     'tpope/vim-fugitive',
-    keys = { { '<leader>g', '<Cmd>Git<CR>', desc = 'Open fugitive' } },
+    keys = {
+      {
+        '<leader>g',
+        function()
+          if vim.bo.filetype == 'fugitive' then
+            vim.api.nvim_win_close(0, false)
+            return
+          end
+          vim.cmd 'Git'
+        end,
+        desc = 'Toggle fugitive',
+      },
+    },
   },
 }
