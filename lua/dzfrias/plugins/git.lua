@@ -45,9 +45,12 @@ return {
       {
         'gD',
         function()
-          if vim.bo.filetype == 'DiffviewFiles' then
-            vim.cmd 'DiffviewClose'
-            return
+          for _, bufnr in ipairs(vim.fn.tabpagebuflist()) do
+            local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+            if filetype == 'DiffviewFiles' then
+              vim.cmd 'DiffviewClose'
+              return
+            end
           end
           vim.cmd 'DiffviewOpen'
         end,
@@ -62,9 +65,12 @@ return {
       {
         '<leader>g',
         function()
-          if vim.bo.filetype == 'fugitive' then
-            vim.api.nvim_win_close(0, false)
-            return
+          for _, bufnr in ipairs(vim.fn.tabpagebuflist()) do
+            local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+            if filetype == 'fugitive' then
+              vim.api.nvim_win_close(vim.fn.bufwinid(bufnr), false)
+              return
+            end
           end
           vim.cmd 'Git'
         end,
