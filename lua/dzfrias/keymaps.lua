@@ -1,8 +1,10 @@
 local util = require 'dzfrias.util'
+local operators = require 'dzfrias.operators'
 -- Set up map functions
 local nnoremap = util.nnoremap
 local inoremap = util.inoremap
 local noremap = util.noremap
+local vnoremap = util.vnoremap
 
 noremap('gg', 'gg0', 'Top of file and first character')
 
@@ -14,6 +16,12 @@ noremap('k', 'gk', 'Move down')
 noremap('j', 'gj', 'Move up')
 
 nnoremap('<C-f>', '<C-^>', 'Alternate buffer')
+nnoremap('<space>p', operators.grep, 'Grep')
+vnoremap(
+  '<space>p',
+  ":<C-u>lua require('dzfrias.operators').grep(vim.fn.visualmode())<CR>",
+  'Grep'
+)
 
 -- Window resizing
 nnoremap('<C-s-l>', '<Cmd>vertical resize -5<CR>', 'Resize window left')

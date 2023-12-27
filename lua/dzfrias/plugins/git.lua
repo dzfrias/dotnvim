@@ -57,6 +57,7 @@ return {
         desc = 'Toggle the diff view',
       },
     },
+    cmd = 'DiffviewOpen',
   },
 
   {

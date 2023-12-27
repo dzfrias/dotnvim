@@ -13,6 +13,12 @@ end
 
 ---@param shortcut string
 ---@param command string|function
+function M.vnoremap(shortcut, command, desc)
+  vim.keymap.set('v', shortcut, command, { noremap = true, desc = desc })
+end
+
+---@param shortcut string
+---@param command string|function
 function M.inoremap(shortcut, command, desc)
   vim.keymap.set('i', shortcut, command, { noremap = true, desc = desc })
 end

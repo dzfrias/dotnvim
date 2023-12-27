@@ -87,16 +87,6 @@ return {
   'tpope/vim-sleuth',
 
   {
-    'smjonas/live-command.nvim',
-    opts = {
-      commands = {
-        Norm = { cmd = 'norm' },
-      },
-    },
-    cmd = 'Norm',
-  },
-
-  {
     'chrisgrieser/nvim-various-textobjs',
     keys = {
       { 'iS', mode = 'o' },
@@ -106,7 +96,6 @@ return {
       { 'aI', mode = 'o' },
       { 'iI', mode = 'o' },
       { 'R', mode = 'o' },
-      { '%', mode = 'o' },
       { 'r', mode = 'o' },
       { 'gG', mode = 'o' },
       { 'n', mode = 'o' },
@@ -117,7 +106,6 @@ return {
       { 'iv', mode = 'o' },
       { 'ik', mode = 'o' },
       { 'ak', mode = 'o' },
-      { 'L', mode = 'o' },
       { 'in', mode = 'o' },
       { 'an', mode = 'o' },
       { '!', mode = 'o' },
@@ -132,6 +120,8 @@ return {
       useDefaultKeymaps = true,
       disabledKeymaps = {
         '%',
+        'gc',
+        'L',
       },
     },
   },
