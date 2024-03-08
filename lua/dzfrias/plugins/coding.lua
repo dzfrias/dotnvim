@@ -193,23 +193,6 @@ return {
     end,
   },
 
-  {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    opts = {
-      panel = {
-        layout = {
-          position = 'right',
-          ratio = 0.45,
-        },
-      },
-      suggestion = {
-        auto_trigger = true,
-      },
-    },
-  },
-
   -- Better clipboard control
   {
     'svermeulen/vim-easyclip',

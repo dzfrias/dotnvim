@@ -93,6 +93,9 @@ return {
 
   { 'dzfrias/scurry.vim', ft = 'scurry' },
 
+  -- Emmet for vim
+  { 'mattn/emmet-vim', ft = { 'html', 'htmldjango' } },
+
   -- Justfile syntax highlights
   { 'vmchale/just-vim', ft = 'just' },
 
