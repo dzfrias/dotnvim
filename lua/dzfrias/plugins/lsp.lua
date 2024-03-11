@@ -49,7 +49,7 @@ return {
       -- Setting up servers
       local lspconfig = require 'lspconfig'
       local default_install =
-        { 'pyright', 'gopls', 'cssls', 'svelte', 'tsserver', 'clangd' }
+        { 'pyright', 'gopls', 'svelte', 'tsserver', 'clangd' }
       for _, lsp in ipairs(default_install) do
         lspconfig[lsp].setup {
           on_attach = on_attach,
@@ -57,7 +57,17 @@ return {
         }
       end
 
+      lspconfig.cssls.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        init_options = {
+          provideFormatter = false,
+        },
+      }
+
       lspconfig.yamlls.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
         settings = {
           yaml = {
             schemas = {
