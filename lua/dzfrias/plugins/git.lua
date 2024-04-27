@@ -78,5 +78,6 @@ return {
         desc = 'Toggle fugitive',
       },
     },
+    cmd = 'Git',
   },
 }

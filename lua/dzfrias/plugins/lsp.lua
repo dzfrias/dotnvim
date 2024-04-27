@@ -140,7 +140,9 @@ return {
           null_ls.builtins.formatting.prettier.with {
             extra_args = { '--prose-wrap', 'always' },
           },
-          null_ls.builtins.diagnostics.mypy,
+          null_ls.builtins.diagnostics.mypy.with {
+            extra_args = { '--python-executable', './venv/bin/python' },
+          },
         },
       }
     end,
