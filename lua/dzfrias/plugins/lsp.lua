@@ -48,14 +48,25 @@ return {
 
       -- Setting up servers
       local lspconfig = require 'lspconfig'
-      local default_install =
-        { 'pyright', 'gopls', 'svelte', 'tsserver', 'clangd' }
+      local default_install = { 'pyright', 'gopls', 'svelte', 'tsserver' }
       for _, lsp in ipairs(default_install) do
         lspconfig[lsp].setup {
           on_attach = on_attach,
           capabilities = capabilities,
         }
       end
+
+      lspconfig.clangd.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        cmd = { '/opt/homebrew/opt/llvm/bin/clangd' },
+        settings = {
+          arguments = {
+            '--query-driver=${workspaceFolder}/Toolchain/Local/**/*',
+            '--header-insertion=never',
+          },
+        },
+      }
 
       lspconfig.cssls.setup {
         on_attach = on_attach,
