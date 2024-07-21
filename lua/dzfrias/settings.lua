@@ -63,9 +63,6 @@ set.splitright = true
 
 set.completeopt = 'menu,menuone,noselect'
 
-set.t_ZH = '^[[3m'
-set.t_ZR = '^[[23m'
-
 set.ignorecase = true
 set.smartcase = true
 

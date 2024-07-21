@@ -78,7 +78,7 @@ return {
     keys = {
       {
         '<leader>x',
-        '<Cmd>TroubleToggle workspace_diagnostics<CR>',
+        '<Cmd>Trouble diagnostics<CR>',
         desc = 'Open Trouble',
       },
     },
@@ -86,7 +86,6 @@ return {
   },
 
   'christoomey/vim-tmux-navigator',
-  'tpope/vim-sleuth',
 
   {
     'chrisgrieser/nvim-various-textobjs',
@@ -150,18 +149,6 @@ return {
     },
   },
 
-  {
-    'numToStr/Comment.nvim',
-    keys = { { 'gc', mode = { 'v', 'n' }, desc = 'Comment' } },
-    opts = function()
-      return {
-        pre_hook = require(
-          'ts_context_commentstring.integrations.comment_nvim'
-        ).create_pre_hook(),
-      }
-    end,
-  },
-
   -- Surround text
   {
     'tpope/vim-surround',
@@ -171,7 +158,6 @@ return {
       { 'ds', desc = 'Delete surrounding' },
       { 'cs', desc = 'Change surrounding' },
     },
-    dependencies = 'tpope/vim-repeat',
   },
 
   -- Better movement with f and t

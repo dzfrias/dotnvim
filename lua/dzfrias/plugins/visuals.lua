@@ -3,6 +3,7 @@ return {
   {
     'dzfrias/noir.nvim',
     lazy = false,
+    dev = true,
     priority = 1000,
     config = function()
       vim.cmd [[colorscheme noir]]
@@ -27,6 +28,7 @@ return {
         globalstatus = true,
         component_separators = '|',
         section_separators = { left = '', right = '' },
+        theme = 'iceberg_dark',
       },
       sections = {
         lualine_a = {

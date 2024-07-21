@@ -4,7 +4,6 @@ return {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'JoosepAlviste/nvim-ts-context-commentstring',
     },
     event = { 'BufReadPost', 'BufNewFile' },
     opts = {
@@ -26,10 +25,6 @@ return {
         additional_vim_regex_highlighting = { 'markdown' },
       },
 
-      context_commentstring = {
-        enable = true,
-      },
-
       autotag = {
         enable = true,
       },
@@ -43,7 +38,8 @@ return {
             ['if'] = '@function.inner',
             ['ac'] = '@call.outer',
             ['ic'] = '@call.inner',
-            ['ia'] = '@argument',
+            ['ia'] = '@parameter.inner',
+            ['aa'] = '@parameter.outer',
           },
         },
 
@@ -52,11 +48,11 @@ return {
           set_jumps = true,
           goto_next_start = {
             [']]'] = '@function.outer',
-            [')'] = '@argument',
+            [')'] = '@parameter.inner',
           },
           goto_previous_start = {
             ['[['] = '@function.outer',
-            ['('] = '@argument',
+            ['('] = '@parameter.inner',
           },
         },
       },
@@ -68,10 +64,4 @@ return {
   },
 
   'nvim-treesitter/nvim-treesitter-context',
-
-  {
-    'nvim-treesitter/playground',
-    cmd = 'TSPlaygroundToggle',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-  },
 }

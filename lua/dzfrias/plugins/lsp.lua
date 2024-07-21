@@ -61,10 +61,10 @@ return {
         capabilities = capabilities,
         cmd = { '/opt/homebrew/opt/llvm/bin/clangd' },
         settings = {
-          arguments = {
-            '--query-driver=${workspaceFolder}/Toolchain/Local/**/*',
-            '--header-insertion=never',
-          },
+          -- arguments = {
+          --   '--query-driver=${workspaceFolder}/Toolchain/Local/**/*',
+          --   '--header-insertion=never',
+          -- },
         },
       }
 
