@@ -12,21 +12,19 @@ return {
       vim.api.nvim_set_hl(0, '@lsp.typemod.method.defaultLibrary.rust', {})
       vim.api.nvim_set_hl(0, '@lsp.typemod.function.defaultLibrary.rust', {})
 
-      local opts = { noremap = true, silent = true }
-      vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-
       -- Key bindings
-      local on_attach = function(client, bufnr)
-        if client.name == 'tsserver' then
-          client.server_capabilities.documentFormattingProvider = false
-        end
-
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+      local default_on_attach = function(_, bufnr)
+        vim.api.nvim_set_option_value(
+          'omnifunc',
+          'v:lua.vim.lsp.omnifunc',
+          { buf = bufnr }
+        )
 
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
         vim.keymap.set('n', '<s-k>', vim.lsp.buf.hover, bufopts)
         vim.keymap.set('n', '<leader>n', vim.lsp.buf.rename, bufopts)
+        vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, bufopts)
         vim.keymap.set(
           { 'n', 'v' },
           '<leader>a',
@@ -48,28 +46,22 @@ return {
 
       -- Setting up servers
       local lspconfig = require 'lspconfig'
-      local default_install = { 'pyright', 'gopls', 'svelte', 'tsserver' }
+      local default_install = { 'pyright', 'gopls', 'svelte' }
       for _, lsp in ipairs(default_install) do
         lspconfig[lsp].setup {
-          on_attach = on_attach,
+          on_attach = default_on_attach,
           capabilities = capabilities,
         }
       end
 
       lspconfig.clangd.setup {
-        on_attach = on_attach,
+        on_attach = default_on_attach,
         capabilities = capabilities,
         cmd = { '/opt/homebrew/opt/llvm/bin/clangd' },
-        settings = {
-          -- arguments = {
-          --   '--query-driver=${workspaceFolder}/Toolchain/Local/**/*',
-          --   '--header-insertion=never',
-          -- },
-        },
       }
 
       lspconfig.cssls.setup {
-        on_attach = on_attach,
+        on_attach = default_on_attach,
         capabilities = capabilities,
         init_options = {
           provideFormatter = false,
@@ -77,7 +69,7 @@ return {
       }
 
       lspconfig.yamlls.setup {
-        on_attach = on_attach,
+        on_attach = default_on_attach,
         capabilities = capabilities,
         settings = {
           yaml = {
@@ -89,15 +81,20 @@ return {
       }
 
       lspconfig.ltex.setup {
-        on_attach = on_attach,
+        on_attach = function(client, bufnr)
+          require('ltex_extra').setup {
+            path = vim.fn.expand '~' .. '/.config/nvim/ltex',
+          }
+          default_on_attach(client, bufnr)
+        end,
         cmd = { 'ltex-ls' },
-        filetypes = { 'markdown', 'text' },
+        filetypes = { 'markdown', 'text', 'tex' },
         flags = { debounce_text_changes = 300 },
       }
 
       lspconfig.lua_ls.setup {
         on_attach = function(client, bufnr)
-          on_attach(client, bufnr)
+          default_on_attach(client, bufnr)
           -- Do not format code
           client.server_capabilities.documentFormattingProvider = false
           client.server_capabilities.documentRangeFormattingProvider = false
@@ -120,6 +117,15 @@ return {
             },
           },
         },
+      }
+
+      lspconfig.tsserver.setup {
+        on_attach = function(client, bufnr)
+          -- Formatting done with prettier via null-ls
+          client.server_capabilities.documentFormattingProvider = false
+          default_on_attach(client, bufnr)
+        end,
+        capabilities = capabilities,
       }
 
       local configs = require 'lspconfig.configs'
@@ -173,5 +179,11 @@ return {
     cmd = 'Mason',
     build = ':MasonUpdate',
     config = true,
+  },
+
+  {
+    'barreiroleo/ltex_extra.nvim',
+    ft = { 'markdown', 'text', 'tex' },
+    dependencies = { 'neovim/nvim-lspconfig' },
   },
 }
