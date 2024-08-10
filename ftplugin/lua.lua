@@ -1,8 +1,7 @@
 local bufnoremap = require('dzfrias/util').bufnoremap
 
-if vim.fn.expand('%'):find 'plugins.lua' then
-  vim.cmd 'normal! zM'
-end
+vim.api.nvim_set_option_value('tabstop', 2, { scope = 'local' })
+vim.api.nvim_set_option_value('shiftwidth', 2, { scope = 'local' })
 
 -- Run the current file
 bufnoremap('n', '<leader>r', ':luafile %<CR>')

@@ -3,7 +3,10 @@ return {
     'dzfrias/arena.nvim',
     dev = true,
     event = 'BufWinEnter',
-    config = true,
+    opts = {
+      ignore_current = true,
+      devicons = true,
+    },
     keys = {
       {
         '<leader>f',
@@ -74,11 +77,11 @@ return {
   {
     'folke/trouble.nvim',
     dependencies = 'kyazdani42/nvim-web-devicons',
-    cmd = { 'Trouble', 'TroubleToggle' },
+    cmd = 'Trouble',
     keys = {
       {
         '<leader>x',
-        '<Cmd>Trouble diagnostics<CR>',
+        '<Cmd>Trouble diagnostics toggle<CR>',
         desc = 'Open Trouble',
       },
     },
@@ -180,6 +183,8 @@ return {
       vim.g.clever_f_mark_direct = 1
     end,
   },
+
+  { 'tpope/vim-sleuth', event = 'VeryLazy' },
 
   -- Better clipboard control
   {
