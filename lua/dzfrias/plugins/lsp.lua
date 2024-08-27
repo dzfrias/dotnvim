@@ -46,7 +46,7 @@ return {
 
       -- Setting up servers
       local lspconfig = require 'lspconfig'
-      local default_install = { 'pyright', 'gopls', 'svelte' }
+      local default_install = { 'pyright', 'gopls', 'svelte', 'sourcekit' }
       for _, lsp in ipairs(default_install) do
         lspconfig[lsp].setup {
           on_attach = default_on_attach,
@@ -81,14 +81,20 @@ return {
       }
 
       lspconfig.ltex.setup {
+        settings = {
+          ltex = {
+            additionalRules = {
+              enablePickyRules = true,
+            },
+          },
+        },
         on_attach = function(client, bufnr)
           require('ltex_extra').setup {
             path = vim.fn.expand '~' .. '/.config/nvim/ltex',
           }
           default_on_attach(client, bufnr)
         end,
-        cmd = { 'ltex-ls' },
-        filetypes = { 'markdown', 'text', 'tex' },
+        filetypes = { 'markdown', 'text', 'tex', 'gitcommit' },
         flags = { debounce_text_changes = 300 },
       }
 
@@ -156,6 +162,8 @@ return {
         sources = {
           -- Use black python formatter
           null_ls.builtins.formatting.black,
+          null_ls.builtins.formatting.swift_format,
+          null_ls.builtins.diagnostics.swiftlint,
           -- Basic zsh linting
           null_ls.builtins.diagnostics.zsh,
           -- Lua autoformatting
@@ -183,7 +191,7 @@ return {
 
   {
     'barreiroleo/ltex_extra.nvim',
-    ft = { 'markdown', 'text', 'tex' },
+    ft = { 'markdown', 'text', 'tex', 'gitcommit' },
     dependencies = { 'neovim/nvim-lspconfig' },
   },
 }
