@@ -21,15 +21,16 @@ return {
 
         server = {
           on_attach = function(_, bufnr)
-            vim.api.nvim_buf_set_option(
-              bufnr,
+            vim.api.nvim_set_option_value(
               'omnifunc',
-              'v:lua.vim.lsp.omnifunc'
+              'v:lua.vim.lsp.omnifunc',
+              { buf = bufnr }
             )
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
             vim.keymap.set('n', '<leader>n', vim.lsp.buf.rename, bufopts)
+            vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
 
             vim.keymap.set(
               'n',

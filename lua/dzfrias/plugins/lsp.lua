@@ -24,7 +24,7 @@ return {
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
         vim.keymap.set('n', '<s-k>', vim.lsp.buf.hover, bufopts)
         vim.keymap.set('n', '<leader>n', vim.lsp.buf.rename, bufopts)
-        vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, bufopts)
+        vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
         vim.keymap.set(
           { 'n', 'v' },
           '<leader>a',
