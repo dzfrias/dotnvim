@@ -46,7 +46,8 @@ return {
 
       -- Setting up servers
       local lspconfig = require 'lspconfig'
-      local default_install = { 'pyright', 'gopls', 'svelte', 'sourcekit' }
+      local default_install =
+        { 'pyright', 'gopls', 'svelte', 'sourcekit', 'zls' }
       for _, lsp in ipairs(default_install) do
         lspconfig[lsp].setup {
           on_attach = default_on_attach,
