@@ -1,0 +1,2 @@
+{"rule":"EN_UNPAIRED_BRACKETS","sentence":"^\\Q^what: You might be thinking: \"what?\\E$"}
+{"rule":"ACCOUNTS_FOR","sentence":"^\\QThe domain part of an email designates which server manages that account\nAn email client connects to\\E$"}

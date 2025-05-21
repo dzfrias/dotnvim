@@ -1,3 +1,7 @@
 SIMD
 Neovim
 LangaugeTool
+Zig
+hacky
+booleans
+enums
