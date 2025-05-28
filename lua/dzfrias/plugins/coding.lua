@@ -152,6 +152,19 @@ return {
     },
   },
 
+  {
+    'mbbill/undotree',
+    keys = {
+      {
+        '<leader>T',
+        function()
+          vim.cmd.UndotreeToggle()
+        end,
+        desc = 'Toggle the undo tree',
+      },
+    },
+  },
+
   -- Surround text
   {
     'tpope/vim-surround',
