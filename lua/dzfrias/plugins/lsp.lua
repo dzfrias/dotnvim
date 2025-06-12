@@ -46,8 +46,7 @@ return {
 
       -- Setting up servers
       local lspconfig = require 'lspconfig'
-      local default_install =
-        { 'pyright', 'gopls', 'svelte', 'sourcekit', 'zls' }
+      local default_install = { 'pyright', 'gopls', 'svelte', 'sourcekit' }
       for _, lsp in ipairs(default_install) do
         lspconfig[lsp].setup {
           on_attach = default_on_attach,
@@ -59,6 +58,12 @@ return {
         on_attach = default_on_attach,
         capabilities = capabilities,
         cmd = { '/opt/homebrew/opt/llvm/bin/clangd' },
+      }
+
+      lspconfig.zls.setup {
+        on_attach = default_on_attach,
+        capabilities = capabilities,
+        cmd = { vim.fn.expand '~/bin/zls' },
       }
 
       lspconfig.cssls.setup {
